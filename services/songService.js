@@ -22,8 +22,9 @@ const createSong = async (songData) => {
   try {
     let song = new Song(songData);
     let { error } = song.songValidate(songData);
-    if (error) throw new Error("Song body not valid!");
-    return song;
+    if (error) return { error };
+    await song.save();
+    return { song };
   } catch (error) {
     throw new Error(error.message);
   }
@@ -49,14 +50,10 @@ const deleteSong = async (songId) => {
   }
 };
 
-const songServices = () => {
-  return {
-    getSongs,
-    getSong,
-    createSong,
-    updateSong,
-    deleteSong,
-  };
+module.exports = {
+  getSongs,
+  getSong,
+  createSong,
+  updateSong,
+  deleteSong,
 };
-
-module.exports = songServices;

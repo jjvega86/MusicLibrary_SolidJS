@@ -1,13 +1,63 @@
-//TODO: Write controllers to call service functions
-//! These are the route handlers
-//* songs.js will contain just routes (urls and call to these controller functions)
+const songServices = require("../services/songService");
 
-//TODO: getAllSongs
+const getAllSongs = async (req, res) => {
+  try {
+    let songs = await songServices.getSongs();
+    if (!songs) return res.status(400).send("No songs found!");
+    return res.status(200).send(songs);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+};
 
-//TODO: getSingleSong
+const getSingleSong = async (req, res) => {
+  try {
+    let song = await songServices.getSong(req.params.songId);
+    if (!song)
+      return res
+        .status(400)
+        .send(`Song with id ${req.params.songId} not found!`);
+    return res.status(200).send(song);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+};
 
-//TODO: postSingleSong
+const postSingleSong = async (req, res) => {
+  try {
+    let result = await songServices.createSong(req.body);
+    if (result.error)
+      return res.status(400).send(`Body not valid: ${result.error}`);
+    return res.send(result.song);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+};
 
-//TODO: updateSingleSong
+const updateSingleSong = async (req, res) => {
+  try {
+    let song = await songServices.updateSong(req.params.songId, req.body);
+    if (!song) return res.status(400).send(`Song not found!`);
+    return res.send(song);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+};
 
-//TODO: deleteSingleSong
+const deleteSingleSong = async (req, res) => {
+  try {
+    let song = await songServices.deleteSong(req.params.songId);
+    if (!song) return res.status(400).send(`Song not found!`);
+    return res.send(song);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
+  }
+};
+
+module.exports = {
+  getAllSongs,
+  getSingleSong,
+  postSingleSong,
+  updateSingleSong,
+  deleteSingleSong,
+};
