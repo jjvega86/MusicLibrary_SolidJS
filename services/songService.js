@@ -49,10 +49,14 @@ const deleteSong = async (songId) => {
   }
 };
 
-module.exports = {
-  getSongs,
-  getSong,
-  createSong,
-  updateSong,
-  deleteSong,
+const songServices = () => {
+  return {
+    getSongs,
+    getSong,
+    createSong,
+    updateSong,
+    deleteSong,
+  };
 };
+
+module.exports = songServices;
