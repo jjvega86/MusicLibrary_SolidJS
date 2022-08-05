@@ -1,11 +1,12 @@
 import { createResource, createSignal } from "solid-js";
 import { fetchSongs } from "./api/musicService";
 
-import { Container, Center, Divider, Box } from "@hope-ui/solid";
+import { Container, Center, Divider, Box, Flex } from "@hope-ui/solid";
 
 import SongTable from "./components/SongTable";
 import Header from "./components/Header";
 import SongFilter from "./components/SongFilter";
+import AddSong from "./components/AddSong";
 
 function App() {
   const [search, setSearch] = createSignal("");
@@ -22,9 +23,10 @@ function App() {
       </Center>
       <Divider />
       <Container mt="$5" centerContent>
-        <Box>
+        <Flex color="black">
           <SongFilter value={search()} handleSearch={handleSearch} />
-        </Box>
+          <AddSong />
+        </Flex>
         <Box mt="$6">{songs() && <SongTable songs={songs()} />}</Box>
       </Container>
     </Container>
