@@ -13,3 +13,12 @@ export const fetchSongs = async (query) => {
     console.log(error);
   }
 };
+
+export const postSong = async (data, refetch) => {
+  try {
+    await axios.post("http://localhost:9001/api/songs", data);
+    await refetch();
+  } catch (error) {
+    console.log(error);
+  }
+};
