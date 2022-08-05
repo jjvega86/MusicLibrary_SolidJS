@@ -20,7 +20,7 @@ export default function SongTable(props) {
                 <Td>{song.album}</Td>
                 <Td>{song.artist}</Td>
                 <Td>{song.genre}</Td>
-                <Td>{song.releaseDate}</Td>
+                <Td>{new Date(song.releaseDate).toLocaleDateString()}</Td>
               </Tr>
             );
           })}
