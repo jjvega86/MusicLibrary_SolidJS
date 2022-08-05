@@ -10,7 +10,7 @@ import AddSong from "./components/AddSong";
 
 function App() {
   const [search, setSearch] = createSignal("");
-  const [songs] = createResource(search, fetchSongs);
+  const [songs, { __, refetch }] = createResource(search, fetchSongs);
 
   const handleSearch = (event) => {
     setSearch(event.currentTarget.value);
@@ -29,7 +29,7 @@ function App() {
           </Box>
           <Spacer />
           <Box p="$5">
-            <AddSong />
+            <AddSong refetch={refetch} />
           </Box>
         </Flex>
         <Box mt="$6">{songs() && <SongTable songs={songs()} />}</Box>

@@ -13,6 +13,7 @@ import {
 } from "@hope-ui/solid";
 
 import { createStore } from "solid-js/store";
+import { postSong } from "../api/musicService";
 
 let initialValues = {
   title: "",
@@ -27,7 +28,7 @@ export default function AddSong(props) {
   const [fields, setFields] = createStore(initialValues);
 
   const handleSave = () => {
-    console.log(fields);
+    postSong(fields, props.refetch);
     onClose();
     setFields({
       title: "",
