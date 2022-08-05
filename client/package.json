@@ -1,0 +1,23 @@
+{
+  "name": "vite-template-solid",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^3.0.0",
+    "vite-plugin-solid": "^2.3.0"
+  },
+  "dependencies": {
+    "@hope-ui/solid": "^0.6.7",
+    "@stitches/core": "^1.2.8",
+    "axios": "^0.27.2",
+    "solid-js": "^1.4.7",
+    "solid-transition-group": "^0.0.10"
+  }
+}

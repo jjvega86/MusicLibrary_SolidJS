@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+input[text] {
+  max-width: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
