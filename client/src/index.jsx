@@ -1,6 +1,6 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
-import { HopeProvider } from "@hope-ui/solid";
+import { HopeProvider, NotificationsProvider } from "@hope-ui/solid";
 
 import "./index.css";
 import App from "./App";
@@ -8,7 +8,9 @@ import App from "./App";
 render(
   () => (
     <HopeProvider>
-      <App />
+      <NotificationsProvider>
+        <App />
+      </NotificationsProvider>
     </HopeProvider>
   ),
   document.getElementById("root")

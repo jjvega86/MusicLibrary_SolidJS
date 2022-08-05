@@ -10,6 +10,7 @@ import {
   ModalOverlay,
   VStack,
   Input,
+  notificationService,
 } from "@hope-ui/solid";
 
 import { createStore } from "solid-js/store";
@@ -36,6 +37,10 @@ export default function AddSong(props) {
       artist: "",
       genre: "",
       releaseDate: "",
+    });
+    notificationService.show({
+      title: "Success!",
+      description: "Song added! 🎶",
     });
   };
 

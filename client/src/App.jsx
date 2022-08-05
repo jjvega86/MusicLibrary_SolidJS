@@ -32,7 +32,9 @@ function App() {
             <AddSong refetch={refetch} />
           </Box>
         </Flex>
-        <Box mt="$6">{songs() && <SongTable songs={songs()} />}</Box>
+        <Box mt="$6">
+          {songs() && <SongTable songs={songs()} refetch={refetch} />}
+        </Box>
       </Container>
     </Container>
   );
