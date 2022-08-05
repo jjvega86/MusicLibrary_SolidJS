@@ -9,6 +9,29 @@ const getSongs = async () => {
   }
 };
 
+const filterSongs = async (query) => {
+  console.log("Filtering!", query);
+  try {
+    let songs = await Song.find();
+    let casedQuery = query.toLowerCase();
+    let filteredSongs = songs.filter((song) => {
+      if (
+        song.title.toLowerCase().includes(casedQuery) ||
+        song.artist.toLowerCase().includes(casedQuery) ||
+        song.genre.toLowerCase().includes(casedQuery) ||
+        song.album.toLowerCase().includes(casedQuery)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    return filteredSongs;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getSong = async (songId) => {
   try {
     let song = await Song.findById(songId);
@@ -56,4 +79,5 @@ module.exports = {
   createSong,
   updateSong,
   deleteSong,
+  filterSongs,
 };

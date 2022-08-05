@@ -2,8 +2,14 @@ const songServices = require("../services/songService");
 
 const getAllSongs = async (req, res) => {
   try {
-    let songs = await songServices.getSongs();
+    let songs = [];
+    if (req.query.search) {
+      songs = await songServices.filterSongs(req.query.search);
+    } else {
+      songs = await songServices.getSongs();
+    }
     if (!songs) return res.status(400).send("No songs found!");
+    console.log("Songs: ", songs);
     return res.status(200).json(songs);
   } catch (error) {
     return res.status(500).send(`Internal Server Error: ${error}`);
