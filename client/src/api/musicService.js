@@ -31,3 +31,12 @@ export const deleteSong = async (songId, refetch) => {
     console.log(error);
   }
 };
+
+export const updateSong = async (songId, refetch, data) => {
+  try {
+    await axios.put(`http://localhost:9001/api/songs/${songId}`, data);
+    await refetch();
+  } catch (error) {
+    console.log(error);
+  }
+};

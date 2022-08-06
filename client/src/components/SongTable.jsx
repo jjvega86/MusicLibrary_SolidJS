@@ -1,5 +1,6 @@
 import { Table, Thead, Tbody, Tr, Td, Th, Button } from "@hope-ui/solid";
 import { deleteSong } from "../api/musicService";
+import UpdateSong from "../components/UpdateSong";
 export default function SongTable(props) {
   return (
     <>
@@ -30,7 +31,7 @@ export default function SongTable(props) {
                   </Button>
                 </Td>
                 <Td>
-                  <Button>UPDATE</Button>
+                  <UpdateSong song={song} refetch={props.refetch} />
                 </Td>
               </Tr>
             );

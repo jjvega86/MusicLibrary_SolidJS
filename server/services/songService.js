@@ -10,7 +10,6 @@ const getSongs = async () => {
 };
 
 const filterSongs = async (query) => {
-  console.log("Filtering!", query);
   try {
     let songs = await Song.find();
     let casedQuery = query.toLowerCase();
