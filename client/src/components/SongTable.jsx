@@ -1,6 +1,9 @@
+import { For } from "solid-js";
 import { Table, Thead, Tbody, Tr, Td, Th, Button } from "@hope-ui/solid";
 import { deleteSong } from "../api/musicService";
 import UpdateSong from "../components/UpdateSong";
+import DeleteSong from "./DeleteSong";
+
 export default function SongTable(props) {
   return (
     <>
@@ -17,8 +20,8 @@ export default function SongTable(props) {
           </Tr>
         </Thead>
         <Tbody>
-          {props.songs.map((song) => {
-            return (
+          <For each={props.songs}>
+            {(song) => (
               <Tr key={song._id}>
                 <Td>{song.title}</Td>
                 <Td>{song.album}</Td>
@@ -26,16 +29,14 @@ export default function SongTable(props) {
                 <Td>{song.genre}</Td>
                 <Td>{new Date(song.releaseDate).toLocaleDateString()}</Td>
                 <Td>
-                  <Button onClick={() => deleteSong(song._id, props.refetch)}>
-                    DELETE
-                  </Button>
+                  <DeleteSong id={song._id} refetch={props.refetch} />
                 </Td>
                 <Td>
                   <UpdateSong song={song} refetch={props.refetch} />
                 </Td>
               </Tr>
-            );
-          })}
+            )}
+          </For>
         </Tbody>
       </Table>
     </>

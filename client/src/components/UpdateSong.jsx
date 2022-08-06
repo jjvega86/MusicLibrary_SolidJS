@@ -41,7 +41,7 @@ export default function UpdateSong(props) {
 
   return (
     <>
-      <Button onClick={onOpen}>Update Song</Button>
+      <Button onClick={onOpen}>UPDATE</Button>
       <Modal opened={isOpen()} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
